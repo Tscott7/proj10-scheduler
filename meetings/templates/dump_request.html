@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html lang="en"> <head>
+<title>Dump request from form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel=stylesheet type=text/css href="/static/css/propose.min.css">
+
+<!-- jquery doesn't follow npm rules; load it directly, not through -->
+<!-- @reqire -->
+<script
+     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+
+
+<!-- The rest of our libraries are loaded with the minified version of -->
+<!-- our main javascript application file -->
+<script type="text/javascript" 
+   src="/static/js/propose.min.js">
+</script>
+<script type="text/javascript">
+   console.log("After (attempted) load of propose.min.js");
+   /* console.log("propose is " + propose); */
+   console.log("moment is " + moment);
+</script>
+
+
+
+<link rel="stylesheet" type="text/css"
+     href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+
+
+
+</head>
+
+<body>
+<div class="container">
+
+<h1>Dumping the request object</h1>
+
+<!--
+  -- If there are any warnings or other messages from a prior action,
+  -- they appear above the rest of the content, just until the next 
+  -- action.
+  -->
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+<p>The request: </p>
+    {{ request }}
+
+
+<hr>
+<!-- hhmts start -->Last modified: Wed Sep 16 15:43:54 PDT 2015 <!-- hhmts end -->
+</div>
+</body> </html>
